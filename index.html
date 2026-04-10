@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seven Twelve — Indie Mobile Games</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0b0c0f;
+      --surface: #13151a;
+      --border: rgba(255,255,255,0.07);
+      --text: #f0ede8;
+      --muted: #7a7d88;
+      --accent: #e8c46a;
+      --accent2: #6ab4e8;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── grid dots bg ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    main { position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(232,196,106,0.3);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 .line2 { color: var(--accent); }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .btn:hover { transform: translateY(-2px); opacity: 0.9; }
+    .btn-primary { background: var(--accent); color: #1a1408; }
+    .btn-ghost { border: 1px solid var(--border); color: var(--text); background: transparent; }
+
+    /* ── DIVIDER ── */
+    .section-label {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 2rem 0 2.5rem;
+    }
+
+    /* ── GAMES ── */
+    .games {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .card:hover {
+      border-color: rgba(255,255,255,0.15);
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .card h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent2);
+      text-decoration: none;
+      margin-top: 0.5rem;
+      transition: gap 0.2s;
+    }
+    .card-link:hover { gap: 10px; }
+
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(106,180,232,0.12);
+      color: var(--accent2);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 500px) {
+      nav { padding: 1.2rem 1.25rem; }
+      .hero { padding: 4rem 1.25rem 3rem; }
+      .games { padding: 0 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <nav>
+    <a class="logo" href="/">Seven <span>Twelve</span></a>
+    <a href="https://play.google.com/store/apps/dev?id=5077776641748840010" target="_blank" rel="noopener">Google Play ↗</a>
+  </nav>
+
+  <section class="hero">
+    <div class="badge">Indie Mobile Games</div>
+    <h1>
+      Games made<br>
+      <span class="line2">with care.</span>
+    </h1>
+    <p>We're a small indie studio building fun, polished mobile games for Android. Based in Ottawa, Canada.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/dev?id=5077776641748840010" target="_blank" rel="noopener">View on Google Play</a>
+      <a class="btn btn-ghost" href="/cdn-cgi/l/email-protection#b7c4c3c2d3ded8808685d0d6dad2c4f7d0dad6dedb99d4d8da">Get in touch</a>
+    </div>
+  </section>
+
+  <div class="section-label">Our games</div>
+
+  <div class="games">
+
+    <div class="card">
+      <div class="card-icon">🐾</div>
+      <div class="tag">Live on Android</div>
+      <h2>Animal Stack</h2>
+      <p>Stack adorable animals as high as you can in this satisfying physics-based balancing game. How tall can you go?</p>
+      <a class="card-link" href="https://play.google.com/store/apps/details?id=com.shanmu.animalstack" target="_blank" rel="noopener">Play now →</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🍔</div>
+      <div class="tag">Live on Android</div>
+      <h2>Food Stack</h2>
+      <p>Build the tallest burger, pizza stack, or snack tower in this bite-sized physics stacking game. Don't let it topple!</p>
+      <a class="card-link" href="https://play.google.com/store/apps/details?id=com.seventwelve.foodstack" target="_blank" rel="noopener">Play now →</a>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 Seven Twelve · Ottawa, Canada · <a href="/cdn-cgi/l/email-protection#8bf8fffeefe2e4bcba
